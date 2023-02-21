@@ -11,6 +11,8 @@ import {
   MinTitle,
   MinPara,
 } from "./styles";
+import { Button } from "../../../common/Button"
+
 
 const LeftContentBlock = ({
   icon,
@@ -37,9 +39,12 @@ const LeftContentBlock = ({
                     section.map((item: any, id: number) => {
                       return (
                         <Col key={id} span={11}>
-                          <SvgIcon src={item.icon} width="60px" height="60px" />
+                          <SvgIcon src={item.icon} width="70px" height="60px" />
                           <MinTitle>{t(item.title)}</MinTitle>
                           <MinPara>{t(item.content)}</MinPara>
+                          
+                          
+                        
                         </Col>
                       );
                     })}

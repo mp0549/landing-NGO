@@ -1,15 +1,15 @@
 {
-  "title": "Light, fast & responsive",
-  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "title": "Join Us and get Involved  ",
+  "text": "We are a stuennt run organisation dedicated to online tutoriong around the community ",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
+      "title": "Students and Parents",
+      "content": "Unlock your potential and expand your horizons with our dedicated tutors. Join us as a student and embark on a journey of endless learning opportunities.",
       "icon": "notes.svg"
     },
     {
-      "title": "Why styled-components?",
-      "content": "Styled Components gives you total control over your components.",
+      "title": "Become a Tutor",
+      "content": "Make a difference in the lives of students and help them achieve their academic dreams by joining our team of dedicated tutors. Get involved and become a part of something truly impactful.",
       "icon": "notes.svg"
     }
   ]
