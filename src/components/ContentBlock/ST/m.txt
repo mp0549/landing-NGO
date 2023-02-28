@@ -1,0 +1,155 @@
+import React, { useState } from "react";
+import { Modal, Form, Input, Button } from "antd";
+import emailjs from "emailjs-com";
+
+
+
+type ModalProps = {
+  title: string;
+  visible: boolean;
+  onClose: () => void;
+};
+
+type RegistrationFormProps = {
+  modalProps: ModalProps;
+  onSubmit: (values: any) => void;
+};
+
+const TeacherRegistrationForm = ({ modalProps, onSubmit }: RegistrationFormProps) => {
+  const [form] = Form.useForm();
+  const { visible, onClose, title } = modalProps;
+
+  const handleSubmit = (values: any) => {
+    emailjs
+      .send(
+        "your_service_id",
+        "your_template_id",
+        {
+          to_email: values.email,
+          message: `Teacher Registration Details:\nName: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\nQualification: ${values.qualification}`,
+        },
+        "your_user_id"
+      )
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        onSubmit(values);
+        form.resetFields();
+      })
+      .catch((err: any) => console.log("FAILED...", err));
+
+  };
+
+  return (
+    <Modal title={title} open={visible} onCancel={onClose} footer={null}>
+      <Form form={form} onFinish={handleSubmit}>
+        <Form.Item
+          name="name"
+          label="Name"
+          rules={[{ required: true, message: "Please input your name!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="email"
+          label="Email"
+          rules={[{ required: true, type: "email", message: "Please input a valid email address!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="phone"
+          label="Phone"
+          rules={[{ required: true, message: "Please input your phone number!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="qualification"
+          label="Qualification"
+          rules={[{ required: true, message: "Please input your qualification!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </Modal>
+  );
+};
+
+const StudentRegistrationForm = ({ modalProps, onSubmit }: RegistrationFormProps) => {
+    const [form] = Form.useForm();
+    const { visible, onClose, title } = modalProps;
+  
+    const handleSubmit = (values: any) => {
+      emailjs
+        .send(
+          "your_service_id",
+          "your_template_id",
+          {
+            to_email: values.email,
+            message: `Student Registration Details:\nName: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\nStandard: ${values.standard}\nSchool: ${values.school}`,
+          },
+          "your_user_id"
+        )
+        .then((response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          onSubmit(values);
+          form.resetFields();
+        })
+        .catch((err: any) => console.log("FAILED...", err));
+
+    };
+  
+    return (
+      <Modal title={title} open={visible} onCancel={onClose} footer={null}>
+        <Form form={form} onFinish={handleSubmit}>
+          <Form.Item
+            name="name"
+            label="Name"
+            rules={[{ required: true, message: "Please input your name!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="email"
+            label="Email"
+            rules={[{ required: true, type: "email", message: "Please input a valid email address!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="phone"
+            label="Phone"
+            rules={[{ required: true, message: "Please input your phone number!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="standard"
+            label="Standard"
+            rules={[{ required: true, message: "Please input your standard!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="school"
+            label="School"
+            rules={[{ required: true, message: "Please input your school name!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+    );
+  };
+  
+  export { TeacherRegistrationForm, StudentRegistrationForm };
