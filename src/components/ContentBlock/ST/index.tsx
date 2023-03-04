@@ -10,8 +10,11 @@ import {
   Content,
   ContentWrapper,
   ButtonWrapper,
+  ModalOverlay, // import modal components
+  ModalContainer,
 } from "./styles";
 import ContactModal from "./smodal";
+import StudentDetailsForm from "./studentm";
 
 const RightBlock = ({
   title,
@@ -37,14 +40,15 @@ const RightBlock = ({
   };
 
   const handleStudentRegButtonClick = () => {
-    setShowContactModal(true);
+    setShowStudentModal(true);
   };
 
-  
+  const handleStudentModalClose = () => {
+    setShowStudentModal(false);
+  };
 
   const handleModalClose = () => {
     setShowTeacherModal(false);
-    
     setShowContactModal(false);
   };
 
@@ -57,19 +61,21 @@ const RightBlock = ({
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
               <ButtonWrapper>
-              <Button
-  name="Student Reg"
-  fixedWidth={true}
-  onClick={handleStudentRegButtonClick}
- 
->{t("Student Registration")}</Button>
+                <Button
+                  name="Student Reg"
+                  fixedWidth={true}
+                  onClick={handleStudentRegButtonClick}
+                >
+                  {t("Student Registration")}
+                </Button>
 
-<Button
-  name="Teacher Reg"
-  fixedWidth={true}
-  onClick={handleTeacherRegButtonClick}
-  
->{t("Teacher Registration")}</Button>
+                <Button
+                  name="Teacher Reg"
+                  fixedWidth={true}
+                  onClick={handleTeacherRegButtonClick}
+                >
+                  {t("Teacher Registration")}
+                </Button>
               </ButtonWrapper>
             </ContentWrapper>
           </Col>
@@ -81,6 +87,15 @@ const RightBlock = ({
           modalOpen={showContactModal}
           setModalOpen={setShowContactModal}
         />
+        {/* Student Details Form Modal */}
+        {showStudentModal && (
+          <ModalOverlay>
+            <ModalContainer>
+              <StudentDetailsForm isOpen={true} onClose={handleStudentModalClose} />
+              <Button onClick={handleStudentModalClose}>Close</Button>
+            </ModalContainer>
+          </ModalOverlay>
+        )}
       </Fade>
     </RightBlockContainer>
   );
