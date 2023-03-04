@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@types/node": "^15.14.9",
     "@types/react": "^17.0.53",
     "@types/react-dom": "^17.0.19",
@@ -12,6 +15,7 @@
     "axios": "^0.21.4",
     "bootstrap": "^5.2.3",
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^4.1.17",
     "i18next": "^19.9.2",
     "i18next-browser-languagedetector": "^6.1.8",
     "i18next-xhr-backend": "^3.2.2",
