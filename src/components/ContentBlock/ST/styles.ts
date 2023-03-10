@@ -38,4 +38,34 @@ export const ButtonWrapper = styled("div")`
   button:last-child {
     margin-left: 20px;
   }
+  `;
+  export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+`;
+
+export const ModalContainer = styled.div`
+  position: relative;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  z-index: 10000;
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+    border-radius: 0;
+    margin: 0;
+    max-width: 100%;
+    height: 100%;
+  }
+
 `;

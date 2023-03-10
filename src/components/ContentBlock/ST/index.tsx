@@ -12,6 +12,7 @@ import {
   ButtonWrapper,
 } from "./styles";
 import ContactModal from "./smodal";
+import StudentDetailsForm from "./studentm";
 
 const RightBlock = ({
   title,
@@ -24,6 +25,7 @@ const RightBlock = ({
   const [showTeacherModal, setShowTeacherModal] = useState(false);
   const [showStudentModal, setShowStudentModal] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
+  const [showStudentDetailsModal, setShowStudentDetailsModal] = useState(false);
 
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
@@ -37,14 +39,12 @@ const RightBlock = ({
   };
 
   const handleStudentRegButtonClick = () => {
-    setShowContactModal(true);
+    setShowStudentDetailsModal(true);
   };
-
-  
 
   const handleModalClose = () => {
     setShowTeacherModal(false);
-    
+    setShowStudentDetailsModal(false);
     setShowContactModal(false);
   };
 
@@ -57,19 +57,20 @@ const RightBlock = ({
               <h6>{t(title)}</h6>
               <Content>{t(content)}</Content>
               <ButtonWrapper>
-              <Button
-  name="Student Reg"
-  fixedWidth={true}
-  onClick={handleStudentRegButtonClick}
- 
->{t("Student Registration")}</Button>
-
-<Button
-  name="Teacher Reg"
-  fixedWidth={true}
-  onClick={handleTeacherRegButtonClick}
-  
->{t("Teacher Registration")}</Button>
+                <Button
+                  name="Student Reg"
+                  fixedWidth={true}
+                  onClick={handleStudentRegButtonClick}
+                >
+                  {t("Student Registration")}
+                </Button>
+                <Button
+                  name="Teacher Reg"
+                  fixedWidth={true}
+                  onClick={handleTeacherRegButtonClick}
+                >
+                  {t("Teacher Registration")}
+                </Button>
               </ButtonWrapper>
             </ContentWrapper>
           </Col>
@@ -80,6 +81,10 @@ const RightBlock = ({
         <ContactModal
           modalOpen={showContactModal}
           setModalOpen={setShowContactModal}
+        />
+        <StudentDetailsForm
+          isOpen={showStudentDetailsModal}
+          onClose={handleModalClose}
         />
       </Fade>
     </RightBlockContainer>
